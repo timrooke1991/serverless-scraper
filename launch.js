@@ -1,3 +1,4 @@
+const request = require('request-promise');
 const AWS = require('aws-sdk');
 
 const list = [
