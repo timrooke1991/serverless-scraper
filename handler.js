@@ -6,7 +6,7 @@ module.exports.scrape = async (event, context, callback) => {
   const name = event;
   const page = await getPage(name);
   const data = await parsePage(page);
-  await saveRatingsToDB(data, name, context);
+  await saveRatingsToDB(data, name);
 
   await callback(null, {
     statusCode: 200,

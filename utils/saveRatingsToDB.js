@@ -7,7 +7,7 @@ const AWS = require('aws-sdk');
 
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
 
-module.exports = (data, businessName, context) => {
+module.exports = (data, businessName) => {
   console.log('data saving...');
   console.log(data);
   const params = {
