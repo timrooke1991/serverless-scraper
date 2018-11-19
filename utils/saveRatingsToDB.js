@@ -23,16 +23,18 @@ module.exports = (data, businessName) => {
 
   // I am can log params okay, but nothing with dynamoDb.put is logged to the console
 
-  dynamoDb.put((params), error => {
-    console.log('putting data');
-    if (error) {
-      console.log(`Error saving data to DynamoDB: ${JSON.stringify(error)}`);
-      return Promise.reject(
-        `Error saving data to DynamoDB: ${JSON.stringify(error)}`
-      );
-    } else {
-      console.log('data saved');
-      return Promise.resolve(data);
-    }
-  });
+  return dynamoDb
+    .put(params, error => {
+      console.log('putting data');
+      if (error) {
+        console.log(`Error saving data to DynamoDB: ${JSON.stringify(error)}`);
+        return Promise.reject(
+          `Error saving data to DynamoDB: ${JSON.stringify(error)}`
+        );
+      } else {
+        console.log('data saved');
+        return Promise.resolve(data);
+      }
+    })
+    .promise();
 };
